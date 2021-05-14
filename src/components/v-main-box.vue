@@ -4,12 +4,39 @@
             <vPreloader :loading="hidePreload" />
             <div v-if="!hidePreload" class="list">
                 <vMainBoxAreaBottom
-                        v-for="movie in MOVIES"
+                        v-for="movie in MOVIES.slice(0, 6)"
                         :key="movie.id"
                         :movies_data="movie"
                         @movieId="movieId"
                 />
             </div>
+
+          <div v-if="!hidePreload" class="list">
+            <vMainBoxAreaBottom
+                v-for="movie in MOVIES.slice(6, 12)"
+                :key="movie.id"
+                :movies_data="movie"
+                @movieId="movieId"
+            />
+          </div>
+
+          <div v-if="!hidePreload" class="list">
+            <vMainBoxAreaBottom
+                v-for="movie in MOVIES.slice(12, 18)"
+                :key="movie.id"
+                :movies_data="movie"
+                @movieId="movieId"
+            />
+          </div>
+
+          <div v-if="!hidePreload" class="list">
+            <vMainBoxAreaBottom
+                v-for="movie in MOVIES.slice(18, 24)"
+                :key="movie.id"
+                :movies_data="movie"
+                @movieId="movieId"
+            />
+          </div>
 
         </div>
     </div>
