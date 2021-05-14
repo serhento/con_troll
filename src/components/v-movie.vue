@@ -10,10 +10,6 @@
         <vPreloader :loading="hidePreload" />
 
         <vMainBoxAreaBottom v-if="!hidePreload" :movies_data="MOVIE"/>
-
-        <div class="v-movie__hiden" v-if="!hidePreload">
-            <p class="v-movie__hiden-sign" v-if="MOVIE===null">К сожалению, по вашему запросу ничего не найдено...</p>
-        </div>
     </div>
 </template>
 
@@ -127,7 +123,7 @@
 
         &:hover{
             top: 0;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
 }
