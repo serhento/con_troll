@@ -9,14 +9,17 @@
 
         <vPreloader :loading="hidePreload" />
 
-        <vMainBoxAreaBottom v-if="!hidePreload" :movies_data="MOVIE"/>
+        <div v-if="!hidePreload">
+            <p class="v-movie__link-text">{{title}}</p>
+            <p class="v-movie__link-text">id - {{id}}</p>
+            <img :src="img" alt="">
+        </div>
     </div>
 </template>
 
 <script>
-    import vMainBoxAreaBottom from './v-main-box__area-bottom';
     import vPreloader from "./v-preloader";
-    import {mapActions, mapGetters} from 'vuex';
+    import {mapActions} from 'vuex';
 
     export default {
         name: "v-movie",
@@ -31,13 +34,8 @@
                 'GET_MOVIE_FROM_API'
             ])
         },
-        computed:{
-            ...mapGetters([
-                "MOVIE"
-            ])
-        },
         components:{
-            vMainBoxAreaBottom, vPreloader
+            vPreloader
         },
         props:{
             movie_item_data:{
@@ -46,7 +44,9 @@
                     return {}
                 }
             },
-            id:{}
+            id:{},
+            title: {},
+            img: {}
         },
         watch: {
             '$route.params.id'() {
@@ -80,20 +80,6 @@
     padding: 0 1rem;
     max-width: 1400px;
 
-    &__hiden{
-        width: 1400px;
-        margin-top: 32px;
-
-        &-sign{
-            margin: 0;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 32px;
-            line-height: 32px;
-            color: #FFFFFF;
-        }
-    }
-
     &__link{
         width: 100%;
         display: flex;
@@ -111,19 +97,6 @@
             line-height: 20px;
             text-decoration-line: underline;
             color: rgba(255, 82, 82, 0.98);
-        }
-
-        &-img{
-            margin-right: 8px;
-        }
-    }
-
-    .v-main-box__area-bottom{
-        width: 100%;
-
-        &:hover{
-            top: 0;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
 }

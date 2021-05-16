@@ -19,7 +19,7 @@ let store = new Vuex.Store({
     },
     actions: {
         GET_PRODUCTS_FROM_API({commit}){
-            return axios('https://floating-sierra-20135.herokuapp.com/api/movies?_limit=10', {
+            return axios('https://floating-sierra-20135.herokuapp.com/api/movies', {
                 method: "GET"
             })
                 .then((products)=>{

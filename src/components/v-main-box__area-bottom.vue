@@ -1,15 +1,13 @@
 <template>
     <div class="v-main-box__area-bottom">
       <img :src="movies_data.poster" alt="">
-      <router-link :to="{name: 'movie', params: {id: movies_data.id}}">
+      <router-link :to="{name: 'movie', params: {id: movies_data.id, title: movies_data.title, img: movies_data.poster}}">
         <button @click="movieId">Подробнее</button>
       </router-link>
     </div>
 </template>
 
 <script>
-    import toFixArray from '../filters/toFixArray';
-
     export default {
         name: "v-main-box__area-bottom",
         props:{
@@ -19,9 +17,6 @@
                     return {}
                 }
             }
-        },
-        filters:{
-            toFixArray
         },
         methods:{
             movieId(){
@@ -49,7 +44,6 @@
 
             button{
               opacity: 1;
-              transition: all 0.5s ease;
             }
 
             img{

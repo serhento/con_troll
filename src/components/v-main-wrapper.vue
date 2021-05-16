@@ -1,6 +1,11 @@
 <template>
     <div class="v-main-wrapper">
-        <v-header/>
+        <vHeader @sidebarToggle = "isShow = !isShow"/>
+        <vSidebar
+                :isShow="isShow"
+                @sidebarClose = "isShow = false"
+        />
+
         <keep-alive>
             <router-view>
 
@@ -11,10 +16,16 @@
 
 <script>
     import vHeader from "./v-header";
+    import vSidebar from "./v-sidebar";
     export default {
         name: "v-main-wrapper",
         components:{
-            vHeader
+            vHeader, vSidebar
+        },
+        data(){
+            return{
+                isShow: false
+            }
         }
     }
 </script>
